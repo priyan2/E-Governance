@@ -1,0 +1,34 @@
+{% load static %}
+<html style="background: transparent !important;">
+<head>
+</head>
+<body style="overflow-x: hidden;background:url('{% static 'images/4.jpg' %}');background-size:100%;">
+   <div class="container" style="width:1000px; margin: 20px auto;">
+    {% include 'menu.html' %}
+    </div>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <div class="fadeIn first">
+      <h3>Public Register Here</h3>
+    </div>
+     {% if messages %}
+          {% for i in messages %}
+            <div class="alert alert-success">{{i}}</div>
+          {% endfor %}
+        {% endif %}
+    <form method="POST" action="" enctype="multipart/form-data"> {% csrf_token %}
+      <input type="text" id="username" class="fadeIn second" name="username" placeholder="Username">
+      <input type="email" id="lname" class="fadeIn second" name="lastname" placeholder="Email Id">
+      <input type="text" id="mail" class="fadeIn third" name="mail" placeholder="Phone Number">
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
+      <input type="text" id="password1" class="fadeIn third" name="country" placeholder="Country">
+      <input type="text" id="state" class="fadeIn third" name="state" placeholder="State">
+      <input type="text" id="city" class="fadeIn third" name="city" placeholder="City">
+      <input type="file" id="image" class="fadeIn third" name="image" placeholder="Upload Image">
+      <textarea name="addr" placeholder="Address"></textarea>
+      <input type="submit" class="fadeIn fourth" value="Public Register">
+    </form>
+  </div>
+</div>
+</body>
+</html>

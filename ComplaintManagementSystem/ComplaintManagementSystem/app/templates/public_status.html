@@ -1,0 +1,51 @@
+{% include 'public_header.html' %}
+
+<div class="table-responsive table-responsive-data2">
+    <table class="table table-data2">
+        <thead>
+            <tr>
+                <th>Area</th>
+                <th>Address</th>
+                <th>Service Name</th>
+                <th>Message</th>
+                <th>Date</th>
+                <th>Option</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for form in ids %}
+            <tr class="tr-shadow">
+                
+                <td>
+                    <span> {{ form.complain_id.area}} </span>
+                </td> 
+                <td>
+                    <span> {{ form.complain_id.address}} </span>
+                </td>
+                <td>
+                    <span> {{ form.complain_id.service_id.service_name}} </span>
+                </td>
+                <td>
+                    <span> {{ form.complain_id.square}} </span>
+                </td>  
+                <td>
+                    <span> {{ form.complain_id.date}} </span>
+                </td>                                               
+                <td>
+                    {% if form.status == 'send' %}
+                    <div class="table-data-feature">
+                      <input type="submit" class="btn btn-warning disabled" value="Worker Allocated">
+                    {% elif form.status == 'finish' %}
+                        <input type="submit" class="btn btn-success disabled" value="Finished Work">
+						<a href="{% url 'give_feedback' pk=form.id %}" class="btn btn-info" >Give Feedback</a>
+                    {% endif %}
+                    </div>  
+                </td>
+            </tr>
+            {% empty %}
+            <tr class=" alert alert-danger ">  Worker Not Allocated </tr>
+            {% endfor %} 
+        </tbody>
+    </table>
+</div>
+{% include 'footer.html' %}

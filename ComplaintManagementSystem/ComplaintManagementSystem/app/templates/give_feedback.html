@@ -1,0 +1,50 @@
+{% include 'public_header.html' %}
+<div class="card">
+
+    <div class="card-body">
+        <div class="card-title">
+            <h3 class=" title-2">Give Feedback</h3>
+        </div>
+        {% if messages %}
+            {% for i in messages %}
+                <div class="alert alert-danger">{{i}}</div>
+            {% endfor %}
+        {% endif %}
+       <form method="post">{% csrf_token %}
+            <div class="form-group ">
+                <label  class="control-label mb-1">Comment</label>
+                <textarea  name="comment" class="form-control " required="required" > </textarea>
+                
+            </div>
+            <div>
+               <input type="submit"  value="Give Feedback" class="btn btn-info " style="padding: 10px;font-size: 15px;">
+            </div>
+        </form><br><br><br>
+		<div class="table-responsive table-responsive-data2">
+    <table class="table table-data2">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Comment</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for i in comment_detail %}
+            <tr class="tr-shadow">
+               <td> <span> {{ i.date }} </span></td>
+               <td> <span> {{ i.comment }} </span></td>
+              
+            </tr>
+            {% empty %}
+            <tr class=" alert alert-danger "> No Feedback </tr>
+            {% endfor %} 
+        </tbody>
+    </table>
+</div>
+		
+    </div>
+	
+	
+	
+</div>
+{% include 'footer.html'%}

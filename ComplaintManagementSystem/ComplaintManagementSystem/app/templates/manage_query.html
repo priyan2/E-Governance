@@ -1,0 +1,58 @@
+{% include 'public_header.html' %}
+
+<div class="table-responsive table-responsive-data2">
+    <table class="table table-data2">
+        <thead>
+            <tr>
+                <th>Reference ID</th>
+                <th>Area</th>
+                <th>Address</th>
+                <th>Complaint Category </th>
+                <th>Message</th>
+                <th>Date</th>
+                <th>Video</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for form in ids %}
+            <tr class="tr-shadow">
+                <td class="desc">{{ form.reference_id }}</td>
+              
+                <td class="desc">{{ form.area }}</td>
+                
+                <td>
+                    <span> {{ form.address}} </span>
+                </td> 
+                  <td>
+                    <span> {{ form.service_id}} </span>
+                </td> 
+                <td>
+                    <span> {{ form.msg}} </span>
+                </td> 
+                <td>
+                    <span> {{ form.date}} </span>
+                </td>     
+                 <td>
+                    <a href="/media/{{ form.video}}" class="btn btn-success" target="_blank"><i class="fa fa-download"> </i> Video/Image</a></span>
+                </td>                                               
+               <td>
+                    {% if form.status == 'Pending' %}
+                    <span class="badge badge-warning">{{form.status}}</span>
+                    {% elif form.status == 'Progress' %}
+                    <span class="badge badge-info">{{form.status}}</span>
+                    {% elif form.status == 'Completed' %}
+                    <span class="badge badge-success">{{form.status}}</span>
+                    {% elif form.status == 'Cancelled' %}
+                    <span class="badge badge-danger">{{form.status}}</span>
+                    {% endif %}
+                  
+                </td>                               
+            </tr>
+            {% empty %}
+            <tr class=" alert alert-danger "> No Services </tr>
+            {% endfor %} 
+        </tbody>
+    </table>
+</div>
+{% include 'footer.html' %}

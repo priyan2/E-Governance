@@ -1,0 +1,20 @@
+{% load static %}
+<html style="background: transparent !important;">
+<head>
+</head>
+<body style="overflow-x: hidden;background:url('{% static 'images/4.jpg' %}');background-size:100%;">
+   <div class="container" style="width: 1000px; margin: 20px auto;">
+    {% include 'menu.html' %}
+    </div>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <div class="fadeIn first">
+      <h3>Account Verification</h3>
+    </div>
+            <div class="alert alert-success">Your Account Has been Verified.. <a href="{% url 'public_login'  %}"> Click Here to Login </a></div>
+       
+  
+  </div>
+</div>
+</body>
+</html>

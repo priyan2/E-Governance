@@ -1,0 +1,55 @@
+{% include 'worker_header.html' %}
+
+<div class="table-responsive table-responsive-data2">
+    <table class="table table-data2">
+        <thead>
+            <tr>
+                <th>Area</th>
+                <th>Address</th>
+                <th>Service Name</th>
+                <th>Message</th>
+                <th>Date</th>
+                <th>Download Video</th>
+                <th>Option</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for form in ids %}
+            <tr class="tr-shadow">
+                
+                <td>
+                    <span> {{ form.complain_id.area}} </span>
+                </td> 
+                <td>
+                    <span> {{ form.complain_id.address}} </span>
+                </td>
+                <td>
+                    <span> {{ form.complain_id.service_id.service_name}} </span>
+                </td>
+                  <td>
+                    <span> {{ form.complain_id.square}} </span>
+                </td>
+                <td>
+                    <span> {{ form.complain_id.date}} </span>
+                </td>  
+                <td>
+                    <a href="/media/{{ form.complain_id.video}}" class="btn btn-success" target="_blank"><i class="fa fa-download"> </i> Video</a></span>
+                </td>                                               
+                <td>
+                    {% if form.status == 'send' %}
+                    <div class="table-data-feature">
+                       <a href="{% url 'update_firestatus' pk=form.id %}?email={{form.complain_id.public_id.email}}&id={{form.complain_id_id}}" class="btn btn-success"> Update Status 
+                        </a>
+                    {% elif form.status == 'finish' %}
+                        <input type="submit" class="btn btn-warning disabled" value="Finished Work">
+                    {% endif %}
+                    </div>  
+                </td>
+            </tr>
+            {% empty %}
+            <tr class=" alert alert-danger "> No Queries </tr>
+            {% endfor %} 
+        </tbody>
+    </table>
+</div>
+{% include 'footer.html' %}

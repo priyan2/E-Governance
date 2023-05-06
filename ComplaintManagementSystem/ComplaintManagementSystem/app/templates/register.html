@@ -1,0 +1,62 @@
+{% load static %}
+<html style="background: transparent !important;">
+<head>
+</head>
+<body style="overflow-x: hidden;background:url('{% static 'images/4.jpg' %}');">
+   <div class="container" style="width: 700px; margin: 20px auto;">
+    {% include 'menu.html' %}
+    </div>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <div class="fadeIn first">
+      <h3> Company Register Here</h3>
+    </div>
+     {% if messages %}
+          {% for i in messages %}
+            <div class="alert alert-success">{{i}}</div>
+          {% endfor %}
+        {% endif %}
+    <form method="POST" action="" enctype="multipart/form-data"> {% csrf_token %}
+      <input type="text" id="username" class="fadeIn second" name="username" placeholder="Username">
+      <input type="text" id="fname" class="fadeIn second" name="firstname" placeholder="Company Name">
+      <input type="email" id="lname" class="fadeIn second" name="lastname" placeholder="Email Id">
+      <input type="number" id="mail" class="fadeIn third" name="mail" placeholder="Phone Number">
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
+      <input type="text" id="password1" class="fadeIn third" name="country" placeholder="Country">
+      <input type="text" id="state" class="fadeIn third" name="state" placeholder="State">
+      <input type="text" id="city" class="fadeIn third" name="city" placeholder="City">
+      <input type="file" id="image" class="fadeIn third" name="image" placeholder="Upload Image">
+      <select name="ctype">
+        <option value="">Select</option>
+        <option value="govt">Govt Company</option>
+        <option value="pvt">Private Company</option>
+      </select>
+      <textarea name="addr" placeholder="Address"></textarea>
+      <input type="submit" class="fadeIn fourth" value="Register">
+    </form>
+  </div>
+</div>
+<style type="text/css">
+  input[type=number] {
+    background-color: #f6f6f6;
+    border: none;
+    color: #0d0d0d;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px;
+    width: 85%;
+    border: 2px solid #f6f6f6;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+}
+</style>
+</body>
+</html>

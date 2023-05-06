@@ -1,0 +1,59 @@
+{% include 'base.html' %}
+<div class="card">
+
+    <div class="card-body">
+        <div class="card-title">
+            <h3 class=" title-2">Add Post</h3>
+        </div>
+       
+        {% if messages %}
+            {% for i in messages %}
+                <div class="alert alert-success">{{i}}</div>
+            {% endfor %}
+        {% endif %}
+        <form action="" method="post" novalidate="novalidate">  {% csrf_token %}
+            <div class="form-group">
+                <input id="user" name="user" type="hidden" disabled class="form-control" value="{{request.session.username}}" aria-required="true" aria-invalid="false">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Category  <span style="color: red;">*</span></label>
+                </div>
+                <select class="custom-select" name="category" id="inputGroupSelect01" required="required" >                    <option value="">Select</option>
+                    <option value="Informative">Informative</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Politics">Politics</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option  value="Others">Others</option>
+                </select>
+            </div>
+            <div class="form-group has-success">
+                <label for="post" class="control-label mb-1">Post <span style="color: red;">*</span></label>
+                <input id="post"  name="post" type="text" class="form-control cc-name valid" required="required" > 
+                
+            </div>
+            <div id="error1"></div>
+            <div>
+                <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block" onclick="validate()" >
+                    <span id="payment-button-amount">Add Post</span>
+                    <span id="payment-button-sending" style="display:none;">Sending…</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% include 'footer.html'%}
+<script>
+    function validate()
+    {
+        a = document.getElemnetById('post').value;
+        if(a=="")
+        {
+            document.getElemnetById('error1').innerHTML="This Field Required";
+        }
+        else
+        {
+            document.getElemnetById('error1').innerHTML="";
+        }
+    }
+</script>

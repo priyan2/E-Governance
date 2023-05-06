@@ -1,0 +1,54 @@
+{% include 'public_header.html' %}
+<div class="card">
+
+    <div class="card-body">
+        <div class="card-title">
+            <h3 class=" title-2">File Complaint</h3>
+        </div>
+       
+        {% if messages %}
+            {% for i in messages %}
+                <div class="alert alert-success">{{i}}</div>
+            {% endfor %}
+        {% endif %}
+        <form action="" method="post" novalidate="novalidate" enctype="multipart/form-data">  {% csrf_token %}
+           
+            <div class="form-group ">
+                <label  class="control-label mb-1">Area Name<span style="color: red;">*</span></label>
+                <input   name="area" type="text" class="form-control " required="required" > 
+                
+            </div>
+             <div class="form-group ">
+                <label  class="control-label mb-1">Choose Category<span style="color: red;">*</span></label>
+                <select class="form-control" name="service">
+                <option value="">Select</option>
+                {% for i in a %}
+                    <option value="{{i.id}}">{{i.category_name}}</option>
+                {% endfor %}
+            </select>
+                
+            </div>
+            
+             <div class="form-group ">
+                <label  class="control-label mb-1">Complaint Description <span style="color: red;">*</span></label>
+                   <textarea name="msg" class="form-control " required="required" ></textarea>
+                
+            </div>
+            <div class="form-group ">
+                <label  class="control-label mb-1">Upload Video/Image <span style="color: red;">*</span></label>
+                <input  name="video" type="file" class="form-control " required="required" > 
+                
+            </div>
+            <div class="form-group ">
+                <label  class="control-label mb-1">Location <span style="color: red;">*</span></label>
+                <textarea name="addr" class="form-control " required="required" ></textarea>  
+                
+            </div>
+             
+            <div>
+               <input type="submit"  value="File Complaint" class="btn btn-info " style="padding: 10px;font-size: 15px;">
+            </div>
+        </form>
+    </div>
+</div>
+{% include 'footer.html'%}

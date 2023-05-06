@@ -1,0 +1,67 @@
+{% include 'base.html' %}
+
+
+{% if messages %}
+    {% for msg in messages %}
+        <div class="alert alert-success">{{msg}}</div>
+    {% endfor %}
+{% endif %}
+<div class="table-responsive table-responsive-data2">
+                                    <table class="table table-data2">
+                                        <thead>
+                                            <tr>
+                                                {% comment %} <th>
+                                                    <label class="au-checkbox">
+                                                        <input type="checkbox">
+                                                        <span class="au-checkmark"></span>
+                                                    </label>
+                                                </th> {% endcomment %}
+                                                <th>Category</th>
+                                                <th>Time</th>
+                                                <th>Post</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for form in forms%}
+                                            <tr class="tr-shadow">
+                                                {% comment %} <td>
+                                                    <label class="au-checkbox">
+                                                        <input type="checkbox">
+                                                        <span class="au-checkmark"></span>
+                                                    </label>
+                                                </td> {% endcomment %}
+                                                <td>
+                                                    <span class= " status--process"> {{ form.category }} </span> <br>
+                                                </td>
+                                                <td class="desc">{{ form.date_time }}</td>
+                                                
+                                                <td>
+                                                    <span> {{ form.Posttext}} </span>
+                                                </td>                                                
+                                                <td>
+                                                    <div class="table-data-feature">
+                                                        {% comment %} <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Send">
+                                                            <i class="zmdi zmdi-mail-send"></i>
+                                                        </button> {% endcomment %}
+                                                        <a  href="{% url 'post_edit' pk=form.id%}" class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                                            <i class="zmdi zmdi-edit"></i>
+                                                        </a>
+                                                        <a href="/delete/{{form.id}}/" onlick="return confirm('Are you sure want to delete')" onclick="return confirm('Are you sure you want to delete this item?');" 
+                                                         class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                                            <i class="zmdi zmdi-delete"></i>
+                                                        </a>
+                                                        {% comment %} <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="More">
+                                                            <i class="zmdi zmdi-more"></i>
+                                                        </button> {% endcomment %}
+                                                    </div> 
+                                                </td>
+                                            </tr>
+                                            {% endfor %} 
+                                            {% if forms == None %} 
+                                             <div class=" alert alert-danger "> No Table data found </div>
+                                            {% endif %}
+                                        </tbody>
+                                    </table>
+                                </div>
+{% include 'footer.html' %}

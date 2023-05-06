@@ -1,0 +1,27 @@
+{% load static %}
+<html style="background: transparent !important;">
+<head>
+</head>
+<body style="overflow-x: hidden;background:url('{% static 'images/4.jpg' %}');background-size:100%;">
+   <div class="container" style="width: 1000px; margin: 20px auto;">
+    {% include 'menu.html' %}
+    </div>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <div class="fadeIn first">
+      <h3>Staff Login</h3>
+    </div>
+     {% if messages %}
+          {% for i in messages %}
+            <div class="alert alert-danger">{{i}}</div>
+          {% endfor %}
+        {% endif %}
+    <form method="POST" action="/staff_login/" > {% csrf_token %}
+      <input type="text" id="username" class="fadeIn second" name="staffid" placeholder="Staffid">
+      <input type="password" id="password" class="fadeIn second" name="psw" placeholder="Password">
+     	 <input type="submit" class="fadeIn fourth" value="Staff Login">
+    </form>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{% include 'admin_header.html' %}
+<div class="card">
+
+    <div class="card-body">
+        <div class="card-title">
+            <h3 class=" title-2">Update Complaint Status</h3>
+        </div>
+       
+        {% if messages %}
+            {% for i in messages %}
+                <div class="alert alert-success">{{i}}</div>
+            {% endfor %}
+        {% endif %}
+        <form action="" method="post" novalidate="novalidate" enctype="multipart/form-data">  {% csrf_token %}
+           
+         
+             <div class="form-group ">
+                <label  class="control-label mb-1">Choose Category<span style="color: red;">*</span></label>
+                <select class="form-control" name="status">
+                <option value="">Select</option>
+                <option value="Progress">Progress</option>
+                <option value="Completed">Completed</option>
+                <option value="Cancelled">Closed</option>
+            </select>
+            </div>
+            
+            
+             
+            <div>
+               <input type="submit"  value="Update Complaint Status" class="btn btn-info " style="padding: 10px;font-size: 15px;">
+            </div>
+        </form>
+    </div>
+</div>
+{% include 'footer.html'%}
