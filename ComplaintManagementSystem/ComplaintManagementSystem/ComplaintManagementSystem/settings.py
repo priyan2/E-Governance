@@ -128,9 +128,9 @@ WSGI_APPLICATION = 'ComplaintManagementSystem.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'newdb',
-        'USER' : 'root',
-        'PASSWORD' : 'root',
+        'NAME': '',
+        'USER' : '',
+        'PASSWORD' : '',
         'HOST' : 'localhost',
         'PORT' : '3306'       
     }
@@ -188,7 +188,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'complaintportal16@gmail.com'
-EMAIL_HOST_PASSWORD = 'ggbvctbiqfkuisip'
+EMAIL_HOST = 'enter your email host'
+EMAIL_HOST_USER = 'your host user name'
+EMAIL_HOST_PASSWORD = 'password'
 EMAIL_PORT = 587
