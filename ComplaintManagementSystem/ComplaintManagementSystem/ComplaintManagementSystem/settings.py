@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ''
+SECRET_KEY = 'django-insecure-ubck^*k4u0ed$uxvg%wl3&*ovzo0akj&sqj!*gv56(lr$kvuls'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -128,9 +128,9 @@ WSGI_APPLICATION = 'ComplaintManagementSystem.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': '',
-        'USER' : '',
-        'PASSWORD' : '',
+        'NAME': 'newdb',
+        'USER' : 'root',
+        'PASSWORD' : 'root',
         'HOST' : 'localhost',
         'PORT' : '3306'       
     }
@@ -188,7 +188,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'enter your email host'
-EMAIL_HOST_USER = 'your host user name'
-EMAIL_HOST_PASSWORD = 'password'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'complaintportal16@gmail.com'
+EMAIL_HOST_PASSWORD = 'ggbvctbiqfkuisip'
 EMAIL_PORT = 587

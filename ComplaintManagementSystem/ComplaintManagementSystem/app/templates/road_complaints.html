@@ -1,0 +1,147 @@
+{% include 'road_header.html' %}
+<form method="post">{% csrf_token %}
+    <div class="row">
+    <div class="col-md-6">
+    <input type="text" name="search" placeholder="Enter Complaint Reference Number" class="form-control"></div>
+   <div class="col-md-5"> <input type="submit" class="btn btn-primary" value="Search Complaint"></div></div>
+</form><br><Br>
+{% if request.POST.search %}
+<div class="table-responsive table-responsive-data2" style="overflow-x:auto !important" >
+    <table class="table table-data2" style="overflow-x:auto !important">
+        <thead>
+            <tr>
+                <th>Reference ID</th>
+                <th>Area</th>
+                <th>Address</th>
+                <th>Complaint Category </th>
+                <th>Message</th>
+                <th>Date</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Video</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for form in detail %}
+            <tr class="tr-shadow">
+                <td class="desc">{{ form.0 }}</td>
+              
+                <td class="desc">{{ form.1 }}</td>
+                
+                <td>
+                    <span> {{ form.2}} </span>
+                </td> 
+                  <td>
+                    <span> {{ form.3}} </span>
+                </td> 
+                <td>
+                    <span> {{ form.4}} </span>
+                </td> 
+                <td>
+                    <span> {{ form.5}} </span>
+                </td> 
+                <td>
+                    <span> {{ form.7}} </span>
+                </td> 
+                <td>
+                    <span> {{ form.8}} </span>
+                </td> 
+                <td>
+                    <span> {{ form.9}} </span>
+                </td>     
+                 <td>
+                    <a href="/media/{{ form.6}}" class="btn btn-success" target="_blank"><i class="fa fa-download"> </i> Video/Image</a></span>
+                </td>   
+                 <td>
+                    {% if form.10 == 'Pending' %}
+                    <span class="badge badge-warning">{{form.10}}</span>
+                    {% elif form.10 == 'Progress' %}
+                    <span class="badge badge-info">{{form.10}}</span>
+                    {% elif form.10 == 'Completed' %}
+                    <span class="badge badge-success">{{form.10}}</span>
+                    {% elif form.10 == 'Cancelled' %}
+                    <span class="badge badge-danger">{{form.10}}</span>
+                    {% endif %}
+                   <a href="{% url 'update' pk=form.1 ids=form.12 %}" class="btn btn-primary"><i class="fa fa-edit"></i> Status </a>
+                </td>                                            
+                
+            </tr>
+            {% empty %}
+            <tr class=" alert alert-danger "> No Complaints </tr>
+            {% endfor %} 
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="table-responsive table-responsive-data2" style="overflow-x:auto !important" >
+    <table class="table table-data2" style="overflow-x:auto !important">
+        <thead>
+            <tr>
+                <th>Reference ID</th>
+                <th>Area</th>
+                <th>Address</th>
+                <th>Complaint Category </th>
+                <th>Message</th>
+                <th>Date</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Video</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for form in row %}
+            <tr class="tr-shadow">
+                <td class="desc">{{ form.0 }}</td>
+              
+                <td class="desc">{{ form.1 }}</td>
+                
+                <td>
+                    <span> {{ form.2}} </span>
+                </td> 
+                  <td>
+                    <span> {{ form.3}} </span>
+                </td> 
+                <td>
+                    <span> {{ form.4}} </span>
+                </td> 
+                <td>
+                    <span> {{ form.5}} </span>
+                </td> 
+                <td>
+                    <span> {{ form.7}} </span>
+                </td> 
+                <td>
+                    <span> {{ form.8}} </span>
+                </td> 
+                <td>
+                    <span> {{ form.9}} </span>
+                </td>     
+                 <td>
+                    <a href="/media/{{ form.6}}" class="btn btn-success" target="_blank"><i class="fa fa-download"> </i> Video/Image</a></span>
+                </td>   
+                 <td>
+                    {% if form.10 == 'Pending' %}
+                    <span class="badge badge-warning">{{form.10}}</span>
+                    {% elif form.10 == 'Progress' %}
+                    <span class="badge badge-info">{{form.10}}</span>
+                    {% elif form.10 == 'Completed' %}
+                    <span class="badge badge-success">{{form.10}}</span>
+                    {% elif form.10 == 'Cancelled' %}
+                    <span class="badge badge-danger">{{form.10}}</span>
+                    {% endif %}
+                   <a href="{% url 'road_update' pk=form.1 ids=form.12 %}" class="btn btn-primary"><i class="fa fa-edit"></i> Status </a>
+                </td>                                            
+                
+            </tr>
+            {% empty %}
+            <tr class=" alert alert-danger "> No Complaints </tr>
+            {% endfor %} 
+        </tbody>
+    </table>
+</div>
+{% endif %}
+{% include 'footer.html' %}

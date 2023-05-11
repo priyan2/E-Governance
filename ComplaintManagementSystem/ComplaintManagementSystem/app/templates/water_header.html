@@ -65,8 +65,8 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="{% url 'public_register' %}">
-                   <h2 style="font-size: 20px;">Water Board </h2>
+                <a href="{% url 'water_complaint' %}">
+                   <h2 style="font-size: 20px;">Water Related Complaints </h2>
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -80,10 +80,10 @@
                             <a href="{% url 'water_complaint' %}">
                                 <i class="fas fa-file-alt "></i>View Complaints</a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="/water_dashboard/">
                                 <i class="fas fa-home"></i>Admin Home</a>
-                        </li> 
+                        </li> -->
                     </ul>
                 </nav>
             </div>
@@ -103,16 +103,17 @@
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="/media/documents/16282_blank-user.jpg" alt="John Doe" />
+                                            <img src="/media/documents/water.jpeg" alt="John Doe" />
                                         </div>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#"><!-- {{request.user.first_name}} --></a>
+                                            <!-- <a class="js-acc-btn" href="#">{{request.user.first_name}}</a> -->
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">
-                                                        <img src="/media/documents/16282_blank-user.jpg" alt="{{request.session.public}}" />
+                                                        <!-- <img src="/media/documents/16282_blank-user.jpg" alt="{{request.session.public}}" /> -->
+                                                        <img src="/media/documents/water.jpeg" alt="{{request.session.public}}" />
                                                     </a>
                                                 </div>
                                                 <div class="content">
@@ -124,6 +125,9 @@
                                             </div>
                                             <div class="account-dropdown__body">
                                             <div class="account-dropdown__footer">
+                                                <a href="/water_complaint/password_change_water/" class="dropdown-item">
+                                                    <i class="fas fa-key mr-2"></i> Change password
+                                                </a>
                                                 <a href="/public_logout/">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>

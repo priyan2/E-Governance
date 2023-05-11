@@ -1,6 +1,7 @@
 {% load static %}
 <html style="background: transparent !important;">
 <head>
+
 </head>
 <body style="overflow-x: hidden;background:url('{% static 'images/4.jpg' %}');background-size:100%;">
    <div class="container" style="width:1000px; margin: 20px auto;">
@@ -13,7 +14,7 @@
     </div>
      {% if messages %}
           {% for i in messages %}
-            <div class="alert alert-success">{{i}}</div>
+            <div class="alert alert-warning">{{i}}</div>
           {% endfor %}
         {% endif %}
     <form method="POST" action="" enctype="multipart/form-data"> {% csrf_token %}
@@ -21,6 +22,13 @@
       <input type="email" id="lname" class="fadeIn second" name="lastname" placeholder="Email Id">
       <input type="text" id="mail" class="fadeIn third" name="mail" placeholder="Phone Number">
       <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
+      <dl>
+        <dt>Password must contains below :</dt>
+        <dd>- String length should be atleast 8.</dd>
+        <dd>- String must have atleast 1 Uppercase Character.</dd>
+        <dd>- String must have atleast 1 Number.</dd>
+        <dd>- String must have atleast 1 Special Character.</dd>
+      </dl>
       <input type="text" id="password1" class="fadeIn third" name="country" placeholder="Country">
       <input type="text" id="state" class="fadeIn third" name="state" placeholder="State">
       <input type="text" id="city" class="fadeIn third" name="city" placeholder="City">
@@ -30,5 +38,8 @@
     </form>
   </div>
 </div>
+
+
+  
 </body>
 </html>

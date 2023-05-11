@@ -65,19 +65,19 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="{% url 'electricity_complaint' %}">
-                   <h2 style="font-size: 20px;">Electricity Related Complaints </h2>
+                <a href="{% url 'park_complaint' %}">
+                   <h2 style="font-size: 20px;">Park related Complaints </h2>
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li>
-                            <a href="/electricity_dashboard/">
+                            <a href="/park_dashboard/">
                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="{% url 'electricity_complaint' %}">
+                            <a href="{% url 'park_complaint' %}">
                                 <i class="fas fa-file-alt "></i>View Complaints</a>
                         </li>
                         <!-- <li>
@@ -103,7 +103,7 @@
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="/media/documents/elec.jpeg" alt="" />
+                                            <img src="/media/documents/park.jpeg" alt="John Doe" />
                                         </div>
                                         <div class="content">
                                             <a class="js-acc-btn" href="#"><!-- {{request.user.first_name}} --></a>
@@ -112,7 +112,7 @@
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">
-                                                        <img src="/media/documents/elec.jpeg" alt="{{request.session.public}}" />
+                                                        <img src="/media/documents/park.jpeg" alt="{{request.session.public}}" />
                                                     </a>
                                                 </div>
                                                 <div class="content">
@@ -123,7 +123,7 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
-                                                <a href="/password_change_elec/" class="dropdown-item">
+                                                <a href="/password_change_park/" class="dropdown-item">
                                                     <i class="fas fa-key mr-2"></i> Change password
                                                 </a>
                                             <div class="account-dropdown__footer">

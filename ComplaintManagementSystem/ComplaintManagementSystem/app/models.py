@@ -16,12 +16,15 @@ class Public_Detail(models.Model):
     status=models.CharField(max_length=200,null=True)
     def __str__(self):
         return self.username
+
+    
 class Category_Detail(models.Model): 
     category_name = models.CharField(max_length=30)
     def __str__(self):
         return self.category_name
+    
 class Rise_Complaint(models.Model):
-	reference_id = models.IntegerField(primary_key=True)
+	reference_id = models.AutoField(primary_key=True)
 	public_id = models.ForeignKey(Public_Detail, on_delete=models.CASCADE,null=True)
 	area = models.CharField(max_length=300)
 	address = models.TextField(max_length=2000)
@@ -37,6 +40,7 @@ class Rise_Complaint(models.Model):
 		self.save()
 	def __str__(self):
 		return self.area
+        
 class Feedback(models.Model):
 	name= models.CharField(max_length=300,null=True)
 	email= models.CharField(max_length=300,null=True)

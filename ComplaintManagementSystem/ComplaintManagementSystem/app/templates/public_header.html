@@ -98,12 +98,12 @@
                             <form class="form-header" action="" method="POST">
                                 <input class="au-input au-input--xl" type="hidden" name="search" placeholder="Search for datas &amp; reports..." />
                                 
-                            </form>
+                            </form> 
                            
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="/media/documents/16282_blank-user.jpg" alt="John Doe" />
+                                            <img src="{{data.image.url}}" class="img-fluid" alt="{{request.session.public}}" />
                                         </div>
                                         <div class="content">
                                             <a class="js-acc-btn" href="#"><!-- {{request.user.first_name}} --></a>
@@ -111,9 +111,10 @@
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
                                                 <div class="image">
-                                                    <a href="#">
-                                                        <img src="/media/documents/16282_blank-user.jpg" alt="{{request.session.public}}" />
-                                                    </a>
+                                                        
+                                                          <img src="/media/documents/{{request.user.image.url}}" class="img-fluid" width="12%" alt="{{request.session.public}}"/>
+                                                        
+                                                    
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
@@ -123,6 +124,9 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
+                                                <a href="/password_change_user/" class="dropdown-item">
+                                                    <i class="fas fa-key mr-2"></i> Change password
+                                                </a>
                                             <div class="account-dropdown__footer">
                                                 <a href="/public_logout/">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
