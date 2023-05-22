@@ -83,6 +83,9 @@ def public_login(request):
                 a = request.session['public']
                 sess = Public_Detail.objects.only('id').get(username=a).id
                 request.session['p_id']=sess
+                recipient_list = [request.user.email]
+                email_from = settings.EMAIL_HOST_USER
+                b = EmailMessage('Verify Your  E-Mail ','Click Here: http://127.0.0.1:8000/verify_email/',email_from,recipient_list).send()
                 return redirect("public_dashboard")
             else:
                 messages.success(request, 'Invalid Username or Password Or Account Not Yet Verified..')
@@ -116,7 +119,7 @@ def send_query(request):
             initial_status='Submitted',status='Pending')
             if crt:
                 messages.success(request,'Your Compliant Has Been Filed.. We will Update You Soon Thanks !!!')
-
+                
         return render(request,'send_query.html',{'a':a})
     else:
         return render(request,'public_login.html',{})
